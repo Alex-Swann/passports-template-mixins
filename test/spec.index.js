@@ -1186,7 +1186,7 @@ describe('Template Mixins', function () {
                     });
                 });
 
-                it('marks foo and bar as selected', function () {
+                it('sets previously selected options of a group to true', function () {
                     res.locals.values = {
                         'field-name': ['foo', 'bar']
                     };
@@ -1198,7 +1198,7 @@ describe('Template Mixins', function () {
                     }), 'value').should.be.eql(['foo', 'bar']);
                 });
 
-                it('marks foo, bar and baz as selected', function () {
+                it('sets previously selected options of a group to true', function () {
                     res.locals.values = {
                         'field-name': ['foo', 'bar', 'baz']
                     };
@@ -1210,7 +1210,7 @@ describe('Template Mixins', function () {
                     }), 'value').should.be.eql(['foo', 'bar', 'baz']);
                 });
 
-                it('marks foo and baz as selected', function () {
+                it('sets previously selected options of a group to true', function () {
                     res.locals.values = {
                         'field-name': ['foo', 'baz']
                     };
@@ -1222,7 +1222,7 @@ describe('Template Mixins', function () {
                     }), 'value').should.be.eql(['foo', 'baz']);
                 });
 
-                it('marks bar as selected', function () {
+                it('sets previously selected options of a group to true', function () {
                     res.locals.values = {
                         'field-name': ['bar']
                     };
