@@ -1168,7 +1168,8 @@ describe('Template Mixins', function () {
                 }));
             });
 
-            describe('multiple options selected', function () {
+            describe('previously selected options', function () {
+
                 beforeEach(function () {
                     middleware = mixins({
                         'field-name': {
@@ -1186,33 +1187,33 @@ describe('Template Mixins', function () {
                     });
                 });
 
-                it('sets previously selected options of a group to true', function () {
+                it('sets previously selected group option to true', function () {
                     res.locals.values = {
-                        'field-name': ['foo', 'bar']
+                        'field-name': ['foo']
                     };
                     middleware(req, res, next);
                     res.locals['checkbox-group']().call(res.locals, 'field-name');
                     var options = render.args[0][0].options;
                     _.pluck(options.filter(function (option) {
                         return option.selected;
-                    }), 'value').should.be.eql(['foo', 'bar']);
+                    }), 'value').should.be.eql(['foo']);
                 });
 
-                it('sets previously selected options of a group to true', function () {
+                it('sets previously selected group option as string to true', function () {
                     res.locals.values = {
-                        'field-name': ['foo', 'bar', 'baz']
+                        'field-name': 'bar'
                     };
                     middleware(req, res, next);
                     res.locals['checkbox-group']().call(res.locals, 'field-name');
                     var options = render.args[0][0].options;
                     _.pluck(options.filter(function (option) {
                         return option.selected;
-                    }), 'value').should.be.eql(['foo', 'bar', 'baz']);
+                    }), 'value').should.be.eql(['bar']);
                 });
 
-                it('sets previously selected options of a group to true', function () {
+                it('sets previously selected group options to true', function () {
                     res.locals.values = {
-                        'field-name': ['foo', 'baz']
+                        'field-name': ['baz', 'foo']
                     };
                     middleware(req, res, next);
                     res.locals['checkbox-group']().call(res.locals, 'field-name');
@@ -1222,17 +1223,6 @@ describe('Template Mixins', function () {
                     }), 'value').should.be.eql(['foo', 'baz']);
                 });
 
-                it('sets previously selected options of a group to true', function () {
-                    res.locals.values = {
-                        'field-name': ['bar']
-                    };
-                    middleware(req, res, next);
-                    res.locals['checkbox-group']().call(res.locals, 'field-name');
-                    var options = render.args[0][0].options;
-                    _.pluck(options.filter(function (option) {
-                        return option.selected;
-                    }), 'value').should.be.eql(['bar']);
-                });
             });
 
         });
